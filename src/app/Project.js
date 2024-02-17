@@ -1,4 +1,4 @@
-class Project {
+export class Project {
   static #projects = [];
   #name;
   #projectItems;
@@ -21,7 +21,11 @@ class Project {
   get projectsItem() {
     return this.#projectItems;
   }
+
+  get name() {
+    return this.#name;
+  }
 }
 
-const project1 = new Project("study");
-console.log(project1);
+// const project1 = new Project("study");
+// console.log(project1);
