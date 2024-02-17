@@ -63,6 +63,30 @@ body {
     @include flex();
     justify-content: start;
     gap: 0.5rem;
+    padding: 0.5rem 1rem;
+
+    button {
+      background-color: aquamarine;
+      margin-left: auto;
+      border: 0;
+      padding: 0.2rem 0.8rem;
+    }
+  }
+
+  ul {
+    padding-left: 4rem;
+    list-style: none;
+
+    li {
+      position: relative;
+    }
+    li::before {
+      content: "🔏";
+      font-size: 1rem;
+      position: absolute;
+      left: -2rem;
+      top: 0.5rem;
+    }
   }
 }
 .display {
