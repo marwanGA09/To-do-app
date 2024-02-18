@@ -1,8 +1,9 @@
 export class CreateProjectItem {
   constructor() {}
-  #createAddBtn() {
+  #createAddBtn(index) {
     const btn = document.createElement("button");
     btn.textContent = "+";
+    btn.dataset.index = index - 1;
     btn.classList.add("add-item");
     return btn;
   }
@@ -11,12 +12,12 @@ export class CreateProjectItem {
     span.textContent = content;
     return span;
   }
-  createLI(content) {
+  createLI(content, index) {
     const li = document.createElement("li");
     li.classList.add("project-item");
 
     li.appendChild(this.#createSpan(content));
-    li.appendChild(this.#createAddBtn());
+    li.appendChild(this.#createAddBtn(index));
     return li;
   }
 }

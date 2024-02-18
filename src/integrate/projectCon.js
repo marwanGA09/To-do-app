@@ -1,11 +1,17 @@
 import { Project } from "../app/Project";
 import { CreateProjectItem } from "../dom/createProjectItem";
+import { addItemEventLister } from "./taskCreator";
 
 export const projectItems = document.querySelector(".project-items");
 export function createProjectItemFunction(projectObjectName) {
   const project1 = new Project(projectObjectName);
-  const ul = new CreateProjectItem().createLI(project1.name);
+  const ul = new CreateProjectItem().createLI(
+    project1.name,
+    Project.projects.length
+  );
   projectItems.appendChild(ul);
+  let addItems = document.querySelectorAll(".add-item");
+  addItemEventLister(addItems);
 }
 
 function createProjectEvent() {
