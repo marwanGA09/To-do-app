@@ -2,12 +2,14 @@ export class TaskCard {
   static createCard(obj) {
     const card = document.createElement("div");
     card.classList.add("card");
-    card.dataset.priority = obj;
-    card.appendChild(TaskCard.#createTittleSpan(obj));
-    card.appendChild(TaskCard.#createTimeSpan(obj)); // need some code
-    card.appendChild(TaskCard.#createDateSpan(obj)); // need some code
+    card.dataset.priority = obj.priority;
+    card.appendChild(TaskCard.#createTittleSpan(obj.tittle));
+    card.appendChild(TaskCard.#createTimeSpan(obj.time)); // need some code
+    card.appendChild(TaskCard.#createDateSpan(obj.date)); // need some code
     card.appendChild(TaskCard.#createEditBtn());
-    card.appendChild(TaskCard.#createIsDone());
+    card.appendChild(TaskCard.#createLabel());
+    card.appendChild(TaskCard.#createIsDone(obj.isDone));
+    card.appendChild(TaskCard.#createViewBtn());
     card.appendChild(TaskCard.#createDeleteBtn());
     return card;
   }
@@ -39,8 +41,21 @@ export class TaskCard {
     const input = document.createElement("input");
     input.type = "checkbox";
     input.id = "is-done";
+    input.name = "is-done";
     input.checked = isDone;
     return input;
+  }
+  static #createLabel() {
+    const label = document.createElement("label");
+    label.for = "is-done";
+    label.textContent = "Finished";
+    return label;
+  }
+  static #createViewBtn() {
+    const btn = document.createElement("button");
+    btn.classList.add("view");
+    btn.textContent = "View 👁️‍🗨️";
+    return btn;
   }
   static #createDeleteBtn() {
     const btn = document.createElement("button");

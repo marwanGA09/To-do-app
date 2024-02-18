@@ -1,16 +1,27 @@
 import { Project } from "../app/Project";
+import { TaskCard } from "../dom/createTaskCard";
 
-const projectItems = document.querySelectorAll(".project-item");
-projectItems.forEach((it) => {
-  it.addEventListener("click", (ev) => {
-    //   console.log(projectItems);
-    console.log(ev.currentTarget);
+export function renderTasks(ev) {
+  const displayCard = document.querySelector(".card-display");
+  const currentProject =
+    Project.projects[ev.currentTarget.dataset.project].projectsItem;
+  // console.log(currentProject);
+  currentProject.forEach((obj) => {
+    let card = TaskCard.createCard(obj);
+    displayCard.appendChild(card);
   });
-});
+}
 
-const display = document.querySelector(".display");
-const currentProject = Project.projects[0].projectsItem;
-// for(let key of c)
-let stringified = JSON.stringify(currentProject);
-console.log(JSON.parse(stringified));
-console.log(currentProject);
+function displayAllProject() {
+  Project.projects.forEach((pro) => {
+    console.log(pro);
+    let pros = pro.projectsItem;
+    console.log(pros);
+    pros.forEach((obj) => {
+      let card = TaskCard.createCard(obj);
+      displayCard.appendChild(card);
+    });
+  });
+}
+
+// displayAllProject();
