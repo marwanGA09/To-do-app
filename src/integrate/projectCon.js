@@ -1,8 +1,9 @@
 import { Project } from "../app/Project";
+import { TaskClass } from "../app/task";
 import { CreateProjectItem } from "../dom/createProjectItem";
 import { addItemEventLister } from "./taskCreator";
 
-export const projectItems = document.querySelector(".project-items");
+const projectItems = document.querySelector(".project-items");
 export function createProjectItemFunction(projectObjectName) {
   const project1 = new Project(projectObjectName);
   const ul = new CreateProjectItem().createLI(
@@ -41,3 +42,17 @@ addProject.addEventListener("click", (ev) => {
 createProjectItemFunction("Study");
 createProjectItemFunction("Shopping");
 createProjectItemFunction("Entertainment");
+
+for (let i = 0; i < Project.projects.length; i++) {
+  for (let j = 0; j < 4; j++) {
+    const task = new TaskClass(
+      `Read Top ${i} ${j}`,
+      "Dom manipulation and its application",
+      new Date(),
+      Project.projects[i].name,
+      2
+    );
+    Project.projects[i].projectsItem = task;
+    console.log(`Task is created  ${i} ${j}`);
+  }
+}
