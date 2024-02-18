@@ -1,7 +1,7 @@
 import { Project } from "../app/Project";
 import { TaskClass } from "../app/task";
 import { CreateProjectItem } from "../dom/createProjectItem";
-import { renderTasks } from "./createCardContainer";
+import { defaultRender, renderTasks } from "./createCardContainer";
 import { addItemEventLister } from "./taskCreator";
 
 const projectItems = document.querySelector(".project-items");
@@ -64,3 +64,5 @@ for (let i = 0; i < Project.projects.length; i++) {
     // console.log(`Task is created  ${i} ${j}`);
   }
 }
+
+defaultRender();
