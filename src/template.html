@@ -168,5 +168,57 @@
       </div>
       <div class="dispalay"></div>
     </div>
+    <dialog class="modal">
+      <form action="" method="dialog" class="item-form"></form>
+      <div>
+        <label for="title">Tittle</label>
+        <input
+          type="text"
+          name="tittle"
+          id="tittle"
+          placeholder="Task's tittle"
+        />
+      </div>
+      <div>
+        <label for="description">Description</label>
+        <textarea
+          name="description"
+          id="description"
+          cols="30"
+          rows="5"
+        ></textarea>
+      </div>
+      <div>
+        <label for="due-date">Due date</label>
+        <input type="datetime-local" name="due-date" id="due-date" />
+      </div>
+      <div>
+        <fieldset>
+          <legend>Priority</legend>
+          <label for="v-urgent"
+            ><input type="radio" name="priority" id="v-urgent" value="1" />very
+            urgent
+          </label>
+          <label for="urgent"
+            ><input type="radio" name="priority" id="urgent" value="2" />
+            Urgent
+          </label>
+          <label for="normal"
+            ><input type="radio" name="priority" id="normal" value="3" />
+            Normal
+          </label>
+          <label for="not-urgent"
+            ><input type="radio" name="priority" id="not-urgent" value="4" />
+            Not urgent
+          </label>
+        </fieldset>
+      </div>
+      <button class="add-task">Add task</button>
+    </dialog>
+    <dialog class="dialog2">
+      <input type="text" name="dialog2" id="dialog2" />
+      <button class="cancel-modal">close</button>
+      <button class="add-dialog2">Add</button>
+    </dialog>
   </body>
 </html>
