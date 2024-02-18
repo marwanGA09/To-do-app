@@ -13,9 +13,30 @@ export class TaskClass {
     this.#priority = priority;
     this.#isDone = false;
   }
-  isDone() {
+  isDoneChanger() {
     this.#isDone = this.#isDone ? false : true;
+  }
+  get isDone() {
     return this.#isDone;
+  }
+  get tittle() {
+    return this.#tittle;
+  }
+  get date() {
+    return this.#date;
+  }
+  get category() {
+    return this.#category;
+  }
+
+  getObject() {
+    return {
+      tittle: this.tittle,
+      date: this.date.toLocaleDateString(),
+      time: this.date.toLocaleTimeString(),
+      category: this.category,
+      isDone: this.isDone,
+    };
   }
 }
 
