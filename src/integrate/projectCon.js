@@ -1,6 +1,7 @@
 import { Project } from "../app/Project";
 import { TaskClass } from "../app/task";
 import { CreateProjectItem } from "../dom/createProjectItem";
+import { renderTasks } from "./createCardContainer";
 import { addItemEventLister } from "./taskCreator";
 
 const projectItems = document.querySelector(".project-items");
@@ -11,8 +12,15 @@ export function createProjectItemFunction(projectObjectName) {
     Project.projects.length
   );
   projectItems.appendChild(ul);
+
   let addItems = document.querySelectorAll(".add-item");
   addItemEventLister(addItems);
+
+  const projectItemsArray = document.querySelectorAll(".project-item");
+  projectItemsArray.forEach((item) => {
+    item.addEventListener("click", renderTasks);
+  });
+  // renderTasks(projectItemsArray);
 }
 
 function createProjectEvent() {

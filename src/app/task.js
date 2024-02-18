@@ -28,6 +28,9 @@ export class TaskClass {
   get category() {
     return this.#category;
   }
+  get priority() {
+    return this.#priority;
+  }
 
   getObject() {
     return {
@@ -36,6 +39,7 @@ export class TaskClass {
       time: this.date.toLocaleTimeString(),
       category: this.category,
       isDone: this.isDone,
+      priority: this.priority,
     };
   }
 }

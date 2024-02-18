@@ -91,6 +91,33 @@ body {
 }
 .display {
   background-color: rgb(150, 150, 123);
+
+  .card-display {
+    background-color: rgb(114, 131, 85);
+    padding: 3rem;
+
+    @include flex();
+    flex-direction: column;
+    gap: 1rem;
+    align-items: start;
+
+    .card {
+      @include flex();
+      gap: 2rem;
+      background-color: aliceblue;
+      padding: 0.3rem 3rem;
+
+      button {
+        border: 0;
+        background-color: #c6b383;
+        padding: 0.3rem 0.9rem;
+        border-radius: 0.4rem;
+      }
+      input {
+        margin-left: -1.5rem;
+      }
+    }
+  }
 }
 img {
   width: 5rem;
