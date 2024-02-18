@@ -1,4 +1,4 @@
-class projectsItem {
+export class TaskClass {
   #tittle;
   #description;
   #date;
@@ -18,6 +18,6 @@ class projectsItem {
   }
 }
 
-const item1 = new projectsItem("read", "lkdjfskl", "jun 3:2022", "study", 2);
-const item2 = new projectsItem("reading", "lkdjfskl", "jun 3:2022", "study", 2);
+const item1 = new TaskClass("read", "lkdjfskl", "jun 3:2022", "study", 2);
+const item2 = new TaskClass("reading", "lkdjfskl", "jun 3:2022", "study", 2);
 console.log(item1);
