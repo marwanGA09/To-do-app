@@ -8,6 +8,30 @@ export function createProjectItemFunction(projectObjectName) {
   projectItems.appendChild(ul);
 }
 
+function createProjectEvent() {
+  const addDialog2 = document.querySelector(".add-dialog2");
+  addDialog2.addEventListener("click", (ev) => {
+    const inp = document.querySelector("#dialog2");
+    if (inp.value) {
+      createProjectItemFunction(inp.value);
+    }
+    inp.value = "";
+    dialog2.close();
+  });
+}
+
+const addProject = document.querySelector(".add-project");
+const dialog2 = document.querySelector(".dialog2");
+addProject.addEventListener("click", (ev) => {
+  dialog2.showModal();
+  createProjectEvent();
+  document.querySelector(".cancel-modal").addEventListener("click", () => {
+    dialog2.close();
+  });
+});
+
+// console.log(addProject);
+// console.log(dialog2);
 createProjectItemFunction("Study");
 createProjectItemFunction("Shopping");
 createProjectItemFunction("Entertainment");

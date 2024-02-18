@@ -14,8 +14,7 @@ export class CreateProjectItem {
   createLI(content) {
     const li = document.createElement("li");
     li.classList.add("project-item");
-    console.log(this.#createSpan("readingfd"));
-    console.log(this.#createAddBtn());
+
     li.appendChild(this.#createSpan(content));
     li.appendChild(this.#createAddBtn());
     return li;

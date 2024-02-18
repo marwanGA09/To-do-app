@@ -28,4 +28,4 @@ export class Project {
 }
 
 // const project1 = new Project("study");
-// console.log(project1);
+// console.log(Project.projects);
