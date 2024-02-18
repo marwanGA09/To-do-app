@@ -52,7 +52,7 @@ for (let i = 0; i < Project.projects.length; i++) {
       Project.projects[i].name,
       2
     );
-    Project.projects[i].projectsItem = task;
-    console.log(`Task is created  ${i} ${j}`);
+    Project.projects[i].projectsItem = task.getObject();
+    // console.log(`Task is created  ${i} ${j}`);
   }
 }

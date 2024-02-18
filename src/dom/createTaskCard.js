@@ -7,6 +7,7 @@ export class TaskCard {
     card.appendChild(TaskCard.#createTimeSpan(obj)); // need some code
     card.appendChild(TaskCard.#createDateSpan(obj)); // need some code
     card.appendChild(TaskCard.#createEditBtn());
+    card.appendChild(TaskCard.#createIsDone());
     card.appendChild(TaskCard.#createDeleteBtn());
     return card;
   }
