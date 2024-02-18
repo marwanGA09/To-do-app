@@ -12,7 +12,7 @@ function createTaskFunction(ev) {
     2
   );
   currentProject.projectsItem = task;
-  console.log(currentProject.projectsItem);
+  // console.log(currentProject.projectsItem);
 }
 
 export function addItemEventLister(addItem) {

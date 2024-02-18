@@ -15,6 +15,7 @@ export class CreateProjectItem {
   createLI(content, index) {
     const li = document.createElement("li");
     li.classList.add("project-item");
+    li.dataset.project = index - 1;
 
     li.appendChild(this.#createSpan(content));
     li.appendChild(this.#createAddBtn(index));
