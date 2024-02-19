@@ -32,7 +32,7 @@ function createTaskFunction(ev) {
       );
       console.log(task);
       console.log(Project.projects);
-      currentProject.projectsItem = task;
+      currentProject.projectsItem = task.getObject();
       renderTasks(ev.target.dataset.index);
     }
   });
