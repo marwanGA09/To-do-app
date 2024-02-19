@@ -102,10 +102,13 @@ body {
     align-items: start;
 
     .card {
-      @include flex();
+      display: grid;
+      grid-template-columns: 1fr repeat(7, max-content);
+      justify-content: start;
       gap: 2rem;
       background-color: aliceblue;
       padding: 0.3rem 3rem;
+      width: 90%;
 
       button {
         border: 0;
