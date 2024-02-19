@@ -176,6 +176,7 @@
       <div>
         <label for="title">Tittle</label>
         <input
+          required
           type="text"
           name="tittle"
           id="tittle"
@@ -185,10 +186,12 @@
       <div>
         <label for="description">Description</label>
         <textarea
+          required
           name="description"
           id="description"
           cols="30"
           rows="5"
+          maxlength="350"
         ></textarea>
       </div>
       <div>
@@ -207,7 +210,13 @@
             Urgent
           </label>
           <label for="normal"
-            ><input type="radio" name="priority" id="normal" value="3" />
+            ><input
+              type="radio"
+              name="priority"
+              id="normal"
+              value="3"
+              checked
+            />
             Normal
           </label>
           <label for="not-urgent"
@@ -216,6 +225,7 @@
           </label>
         </fieldset>
       </div>
+      <button class="cancel-task">Cancel</button>
       <button class="add-task">Add task</button>
     </dialog>
     <dialog class="dialog2">

@@ -10,7 +10,7 @@ export function defaultRender() {
   });
 }
 export function renderTasks(ev) {
-  console.log(ev);
+  // console.log(ev);
   removeCards();
   const displayCard = document.querySelector(".card-display");
   const currentProject =
