@@ -35,7 +35,7 @@ export class TaskClass {
   getObject() {
     return {
       tittle: this.tittle,
-      date: this.date.toLocaleDateString(),
+      date: this.date.toDateString(),
       time: this.date.toLocaleTimeString(),
       category: this.category,
       isDone: this.isDone,
