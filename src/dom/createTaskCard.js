@@ -16,7 +16,7 @@ export class TaskCard {
   static #createTittleSpan(tittle) {
     const tit = document.createElement("span");
     tit.classList.add("tittle-elm");
-    tit.textContent = tittle;
+    tit.textContent = `${tittle.slice(0, 39)}...`;
     return tit;
   }
   static #createTimeSpan(dateValue) {
