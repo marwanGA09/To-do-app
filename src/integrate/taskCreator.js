@@ -15,7 +15,13 @@ function createTaskFunction(ev) {
   // console.log(currentProject.projectsItem);
   // alert("hy");
   const modal = document.querySelector(".modal");
+
+  const cancelTask = document.querySelector(".cancel-task");
   modal.showModal();
+  console.log(cancelTask);
+  cancelTask.addEventListener("click", () => {
+    modal.close();
+  });
 }
 
 export function addItemEventLister(addItem) {
