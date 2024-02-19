@@ -191,7 +191,6 @@ const projectData = [
 for (let i = 0; i < Project.projects.length; i++) {
   for (let j = 0; j < 4; j++) {
     let currentTask = projectData[i][j];
-    console.log(currentTask);
     const task = new TaskClass(
       currentTask["title"],
       currentTask["description"],
