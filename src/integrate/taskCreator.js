@@ -2,25 +2,36 @@ import { Project } from "../app/Project";
 import { TaskClass } from "./../app/task.js";
 
 function createTaskFunction(ev) {
-  // const currentProject = Project.projects[ev.target.dataset.index];
-  // //   console.log(currentProject);
-  // const task = new TaskClass(
-  //   "Read Top",
-  //   "Dom manipulation and its application",
-  //   new Date(),
-  //   currentProject.name,
-  //   2
-  // );
-  // currentProject.projectsItem = task;
-  // console.log(currentProject.projectsItem);
-  // alert("hy");
   const modal = document.querySelector(".modal");
+  const formData = document.querySelector(".item-form");
+  const addTask = document.querySelector(".add-task");
 
   const cancelTask = document.querySelector(".cancel-task");
   modal.showModal();
-  console.log(cancelTask);
+  // console.log(cancelTask);
   cancelTask.addEventListener("click", () => {
     modal.close();
+    // console.log("close task");
+  });
+
+  addTask.addEventListener("click", () => {
+    // console.log("add task");
+    let dataInput = Object.fromEntries(new FormData(formData));
+    // console.log("before", dataInput, dataInput.tittle);
+    if (dataInput.tittle != "") {
+      // console.log("after", dataInput);
+
+      const currentProject = Project.projects[ev.target.dataset.index];
+      const task = new TaskClass(
+        dataInput.tittle,
+        dataInput.description,
+        new Date(dataInput["due-date"]),
+        currentProject.name,
+        dataInput.priority
+      );
+      console.log(task);
+      currentProject.projectsItem = task;
+    }
   });
 }
 
@@ -28,4 +39,4 @@ export function addItemEventLister(addItem) {
   addItem.forEach((item) => item.addEventListener("click", createTaskFunction));
 }
 
-createTaskFunction();
+// createTaskFunction();

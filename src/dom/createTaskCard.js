@@ -40,7 +40,7 @@ export class TaskCard {
   static #createIsDone(isDone) {
     const input = document.createElement("input");
     input.type = "checkbox";
-    input.id = "is-done";
+    // input.id = "is-done";
     input.name = "is-done";
     input.checked = isDone;
     return input;
