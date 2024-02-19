@@ -1,5 +1,6 @@
 import { Project } from "../app/Project";
 import { TaskClass } from "./../app/task.js";
+import { renderTasks } from "./createCardContainer.js";
 
 function createTaskFunction(ev) {
   const modal = document.querySelector(".modal");
@@ -30,7 +31,9 @@ function createTaskFunction(ev) {
         dataInput.priority
       );
       console.log(task);
+      console.log(Project.projects);
       currentProject.projectsItem = task;
+      renderTasks(ev.target.dataset.index);
     }
   });
 }

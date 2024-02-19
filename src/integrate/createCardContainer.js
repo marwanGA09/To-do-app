@@ -13,9 +13,8 @@ export function renderTasks(ev) {
   // console.log(ev);
   removeCards();
   const displayCard = document.querySelector(".card-display");
-  const currentProject =
-    Project.projects[ev.currentTarget.dataset.project].projectsItem;
-  // console.log(currentProject);
+  let index = Number.isInteger(+ev) ? ev : ev.currentTarget.dataset.project;
+  const currentProject = Project.projects[index].projectsItem;
   currentProject.forEach((obj) => {
     let card = TaskCard.createCard(obj);
     displayCard.appendChild(card);
