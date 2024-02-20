@@ -3,6 +3,7 @@ import { TaskClass } from "./../app/task.js";
 import { renderTasks } from "./createCardContainer.js";
 
 function createTaskFunction(ev) {
+  let currentIndex = ev.target.dataset.index;
   const modal = document.querySelector(".modal");
   const formData = document.querySelector(".item-form");
   const addTask = document.querySelector(".add-task");
@@ -15,27 +16,31 @@ function createTaskFunction(ev) {
     // console.log("close task");
   });
 
-  addTask.addEventListener("click", () => {
-    // console.log("add task");
-    let dataInput = Object.fromEntries(new FormData(formData));
-    // console.log("before", dataInput, dataInput.tittle);
-    if (dataInput.tittle != "") {
-      // console.log("after", dataInput);
+  addTask.addEventListener(
+    "click",
+    () => {
+      // console.log("add task");
+      let dataInput = Object.fromEntries(new FormData(formData));
+      // console.log("before", dataInput, dataInput.tittle);
+      if (dataInput.tittle != "") {
+        // console.log("after", dataInput);
 
-      const currentProject = Project.projects[ev.target.dataset.index];
-      const task = new TaskClass(
-        dataInput.tittle,
-        dataInput.description,
-        new Date(dataInput["due-date"]),
-        currentProject.name,
-        dataInput.priority
-      );
-      console.log(task);
-      console.log(Project.projects);
-      currentProject.projectsItem = task.getObject();
-      renderTasks(ev.target.dataset.index);
-    }
-  });
+        const currentProject = Project.projects[currentIndex];
+        const task = new TaskClass(
+          dataInput.tittle,
+          dataInput.description,
+          new Date(dataInput["due-date"]),
+          currentProject.name,
+          dataInput.priority
+        );
+        // console.log(task);
+        currentProject.projectsItem = task.getObject();
+        console.log(currentProject);
+        renderTasks(currentIndex);
+      }
+    },
+    { once: true }
+  );
 }
 
 export function addItemEventLister(addItem) {
