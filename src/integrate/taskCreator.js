@@ -21,6 +21,7 @@ function createTaskFunction(ev) {
     () => {
       // console.log("add task");
       let dataInput = Object.fromEntries(new FormData(formData));
+      clearForm(modal);
       // console.log("before", dataInput, dataInput.tittle);
       if (dataInput.tittle != "") {
         // console.log("after", dataInput);
@@ -35,7 +36,7 @@ function createTaskFunction(ev) {
         );
         // console.log(task);
         currentProject.projectsItem = task.getObject();
-        console.log(currentProject);
+        // console.log(currentProject);
         renderTasks(currentIndex);
       }
     },
@@ -48,3 +49,13 @@ export function addItemEventLister(addItem) {
 }
 
 // createTaskFunction();
+
+function clearForm(modal) {
+  const tittle = document.querySelector("#tittle");
+  const description = document.querySelector("#description");
+  const dueDate = document.querySelector("#due-date");
+  tittle.value = "";
+  description.value = "";
+  dueDate.value = "";
+  modal.close();
+}

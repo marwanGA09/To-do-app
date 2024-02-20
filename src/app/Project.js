@@ -26,6 +26,3 @@ export class Project {
     return this.#name;
   }
 }
-
-// const project1 = new Project("study");
-// console.log(Project.projects);
