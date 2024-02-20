@@ -16,8 +16,8 @@ export class TaskCard {
   static #createTittleSpan(tittle) {
     const tit = document.createElement("span");
     tit.classList.add("tittle-elm");
-    if (tittle.length > 40) {
-      tit.textContent = `${tittle.slice(0, 39)}...`;
+    if (tittle.length > 35) {
+      tit.textContent = `${tittle.slice(0, 34)}...`;
     } else {
       tit.textContent = tittle;
     }
