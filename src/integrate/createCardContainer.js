@@ -4,7 +4,10 @@ import { TaskCard } from "../dom/createTaskCard";
 // render Default
 export function defaultRender() {
   const displayCard = document.querySelector(".card-display");
-  Project.projects[0].projectsItem.forEach((obj) => {
+  let project0 = JSON.parse(
+    localStorage.getItem(`${Project.projects[0].name.toLowerCase()}`)
+  );
+  project0.forEach((obj) => {
     let card = TaskCard.createCard(obj);
     displayCard.appendChild(card);
   });
@@ -14,7 +17,10 @@ export function renderTasks(ev) {
   removeCards();
   const displayCard = document.querySelector(".card-display");
   let index = Number.isInteger(+ev) ? ev : ev.currentTarget.dataset.project;
-  const currentProject = Project.projects[index].projectsItem;
+  const currentProject = JSON.parse(
+    localStorage.getItem(`${Project.projects[index].name.toLowerCase()}`)
+  );
+
   currentProject.forEach((obj) => {
     let card = TaskCard.createCard(obj);
     displayCard.appendChild(card);
