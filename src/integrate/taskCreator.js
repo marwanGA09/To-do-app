@@ -36,7 +36,11 @@ function createTaskFunction(ev) {
         );
         // console.log(task);
         currentProject.projectsItem = task.getObject();
-        // console.log(currentProject);
+        localStorage.setItem(
+          `${currentProject.name.toLowerCase()}`,
+          JSON.stringify(currentProject.projectsItem)
+        );
+        localStorage.setItem("test", "updated");
         renderTasks(currentIndex);
       }
     },

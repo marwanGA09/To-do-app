@@ -20,7 +20,6 @@ export function createProjectItemFunction(projectObjectName) {
   projectItemsArray.forEach((item) => {
     item.addEventListener("click", renderTasks);
   });
-  // renderTasks(projectItemsArray);
 }
 
 function createProjectEvent() {
@@ -202,14 +201,14 @@ for (let i = 0; i < Project.projects.length; i++) {
 
     // console.log(`Task is created  ${i} ${j}`);
   }
+  if (!localStorage.getItem(`${Project.projects[i].name.toLowerCase()}`)) {
+    localStorage.setItem(
+      `${Project.projects[i].name.toLowerCase()}`,
+      JSON.stringify(Project.projects[i].projectsItem)
+    );
+  }
 }
-// localStorage.setItem(
-//   `${Project.projects[0].name}`,
-//   JSON.stringify(Project.projects[0].projectsItem)
-// );
-// localStorage.setItem("test", "testingdata");
 
-// localStorage.clear();
-// console.log(localStorage.getItem(`${Project.projects[0].name}`));
-// console.log(JSON.parse(JSON.stringify(Project.projects[1].projectsItem)));
+localStorage.setItem("test", "klsdjfklajd");
+
 defaultRender();
