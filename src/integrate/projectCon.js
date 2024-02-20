@@ -49,7 +49,7 @@ addProject.addEventListener("click", (ev) => {
 createProjectItemFunction("Study");
 createProjectItemFunction("Shopping");
 createProjectItemFunction("Entertainment");
-const projectData = [
+const defaultData = [
   [
     {
       title:
@@ -189,7 +189,7 @@ const projectData = [
 
 for (let i = 0; i < Project.projects.length; i++) {
   for (let j = 0; j < 4; j++) {
-    let currentTask = projectData[i][j];
+    let currentTask = defaultData[i][j];
     const task = new TaskClass(
       currentTask["title"],
       currentTask["description"],
@@ -208,7 +208,12 @@ for (let i = 0; i < Project.projects.length; i++) {
     );
   }
 }
+localStorage.clear();
 
-localStorage.setItem("test", "klsdjfklajd");
-
+// localStorage.setItem("test", "klsdjfklajd");
+// const refactored = [
+//   JSON.parse(localStorage.getItem(`${Project.projects[0].name.toLowerCase()}`)),
+// ];
+// console.log(refactored);
+// console.log(defaultData[0]);
 defaultRender();
