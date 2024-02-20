@@ -199,8 +199,17 @@ for (let i = 0; i < Project.projects.length; i++) {
       currentTask["priority"]
     );
     Project.projects[i].projectsItem = task.getObject();
+
     // console.log(`Task is created  ${i} ${j}`);
   }
 }
+// localStorage.setItem(
+//   `${Project.projects[0].name}`,
+//   JSON.stringify(Project.projects[0].projectsItem)
+// );
+// localStorage.setItem("test", "testingdata");
 
+// localStorage.clear();
+// console.log(localStorage.getItem(`${Project.projects[0].name}`));
+// console.log(JSON.parse(JSON.stringify(Project.projects[1].projectsItem)));
 defaultRender();
