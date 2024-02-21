@@ -14,10 +14,13 @@ export class TaskClass {
     this.#isDone = false;
   }
   isDoneChanger() {
-    this.#isDone = this.#isDone ? false : true;
+    this.isDone = this.isDone ? false : true;
   }
   get isDone() {
     return this.#isDone;
+  }
+  set isDone(val) {
+    this.#isDone = val;
   }
   get tittle() {
     return this.#tittle;
@@ -45,10 +48,7 @@ export class TaskClass {
       category: this.category,
       isDone: this.isDone,
       priority: this.priority,
+      isDoneChanger: this.isDoneChanger,
     };
   }
 }
-
-// const item1 = new TaskClass("read", "lkdjfskl", "jun 3:2022", "study", 2);
-// const item2 = new TaskClass("reading", "lkdjfskl", "jun 3:2022", "study", 2);
-// console.log(item1);

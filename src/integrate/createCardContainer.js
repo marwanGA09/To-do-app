@@ -6,9 +6,9 @@ export function defaultRender() {
   const displayCard = document.querySelector(".card-display");
   let projectsArray = Project.setProjects[0].projectsItem;
 
-  projectsArray.forEach((obj, index) => {
+  projectsArray.forEach((obj, objectIndex) => {
     if (obj != null) {
-      let card = TaskCard.createCard(obj, index);
+      let card = TaskCard.createCard(obj, objectIndex, 0);
       displayCard.appendChild(card);
     }
   });
@@ -20,11 +20,9 @@ export function renderTasks(ev) {
   let index = Number.isInteger(+ev) ? ev : ev.currentTarget.dataset.project;
 
   let currentProject = Project.setProjects[index].projectsItem;
-  // currentProject = currentProject.filter((project) => project != null);
-  // console.log(currentProject);
   if (currentProject != null) {
-    currentProject.forEach((obj, index) => {
-      let card = TaskCard.createCard(obj, index);
+    currentProject.forEach((obj, objectIndex) => {
+      let card = TaskCard.createCard(obj, objectIndex, index);
       displayCard.appendChild(card);
     });
   }

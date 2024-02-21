@@ -1,9 +1,11 @@
 export class TaskCard {
-  static createCard(obj) {
+  static createCard(obj, objectIndex, projectIndex) {
     // console.log(obj)
     const card = document.createElement("div");
     card.classList.add("card");
     card.dataset.priority = obj.priority;
+    card.dataset.objectIndex = objectIndex;
+    card.dataset.projectIndex = projectIndex;
     card.appendChild(TaskCard.#createTittleSpan(obj.tittle));
     card.appendChild(TaskCard.#createTimeSpan(obj.time)); // need some code
     card.appendChild(TaskCard.#createDateSpan(obj.date)); // need some code
@@ -45,7 +47,7 @@ export class TaskCard {
   static #createIsDone(isDone) {
     const input = document.createElement("input");
     input.type = "checkbox";
-    // input.id = "is-done";
+    input.classList.add("is-done");
     input.name = "is-done";
     input.checked = isDone;
     return input;
