@@ -17,9 +17,11 @@ export class Project {
 
   set projectsItem(itemObj) {
     this.#projectItems.push(itemObj);
+    localStorage.setItem(`${this.#name}`, JSON.stringify(this.#projectItems));
   }
   get projectsItem() {
-    return this.#projectItems;
+    // return this.#projectItems;
+    return JSON.parse(localStorage.getItem(`${this.#name}`));
   }
 
   get name() {
