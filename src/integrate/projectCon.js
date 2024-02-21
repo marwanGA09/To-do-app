@@ -185,8 +185,17 @@ let defaultData = [
   ],
 ];
 
-assignTask(defaultData);
+console.log(JSON.parse(localStorage.getItem(Project.setProjects[0].name)));
 
+assignTask(defaultData);
+// localStorage.clear();
+if (localStorage.length > 0) {
+  console.log("there is local storage");
+  console.log(localStorage.length);
+  console.log(localStorage.getItem("localStorageKey"));
+  // localStorage.getItem();
+}
+// console.log(Project.setProjects[0].length)
 function assignTask(data) {
   for (let i = 0; i < Project.setProjects.length; i++) {
     for (let j = 0; j < 4; j++) {
