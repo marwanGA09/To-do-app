@@ -204,12 +204,6 @@ let defaultData = [
 // console.log(JSON.parse(localStorage.getItem(Project.setProjects[0].name)));
 let localStorageKey = JSON.parse(localStorage.getItem("localStorageKey"));
 
-let dataContainer = [];
-
-for (let i = 0; i < localStorageKey.length; i++) {
-  // console.log(JSON.parse(localStorage.getItem(localStorageKey[i])));
-  dataContainer.push(JSON.parse(localStorage.getItem(localStorageKey[i])));
-}
 // console.log(defaultData);
 // console.log(dataContainer);
 
@@ -250,12 +244,19 @@ for (let i = 0; i < localStorageKey.length; i++) {
 //   console.log(localStorageKey);
 // }
 
-if (localStorage.getItem("localStorageKey").length > 0) {
+if (localStorage.getItem("localStorageKey") != null) {
+  console.log(localStorage.getItem("localStorageKey"));
+  let dataContainer = [];
+
+  for (let i = 0; i < localStorageKey.length; i++) {
+    // console.log(JSON.parse(localStorage.getItem(localStorageKey[i])));
+    dataContainer.push(JSON.parse(localStorage.getItem(localStorageKey[i])));
+  }
   let local = JSON.parse(localStorage.getItem("localStorageKey"));
   for (let i = 0; i < local.length; i++) {
     createProjectItemFunction(local[i]);
   }
-
+  console.log(dataContainer);
   assignTask(dataContainer);
   console.log("from local storage");
 } else {

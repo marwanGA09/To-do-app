@@ -12,10 +12,6 @@ export class Project {
 
   static set setProjectsName(obj) {
     Project.#projectNames.push(obj);
-    localStorage.setItem(
-      "localStorageKey",
-      JSON.stringify(Project.#projectNames)
-    );
   }
 
   static set setProjects(obj) {
@@ -28,6 +24,10 @@ export class Project {
   set projectsItem(itemObj) {
     this.#projectItems.push(itemObj);
     localStorage.setItem(`${this.#name}`, JSON.stringify(this.#projectItems));
+    localStorage.setItem(
+      "localStorageKey",
+      JSON.stringify(Project.#projectNames)
+    );
   }
   get projectsItem() {
     // return this.#projectItems;
