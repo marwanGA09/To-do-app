@@ -1,9 +1,11 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = {
-  entry: "./src/index.js",
-  mode: "production",
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { default: merge } = require("webpack-merge");
+const webpackCommon = require("./webpack.common");
+
+module.exports = merge(webpackCommon, {
+  mode: "development",
   devtool: "inline-source-map", // Provides source maps for better debugging experience
 
   output: {
@@ -16,30 +18,17 @@ module.exports = {
     port: 9000,
     hot: true, // Enables hot module replacement (HMR)
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/template.html",
+    }),
+  ],
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ["babel-loader"], // Transpile JavaScript using Babel
-      },
-      {
-        test: /\.html$/,
-        use: ["html-loader"], // both style and html  process img inside it
-      },
-      {
-        test: /\.(jpg|jpeg|png|gif|svg|webp)$/i,
-        type: "asset/resource", // Inject CSS into the DOM
-      },
       {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"], // Inject CSS into the DOM
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/template.html",
-    }),
-  ],
-};
+});
