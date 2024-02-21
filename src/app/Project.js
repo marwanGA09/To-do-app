@@ -5,13 +5,13 @@ export class Project {
   constructor(name) {
     this.#name = name;
     this.#projectItems = [];
-    Project.projects = this;
+    Project.setProjects = this;
   }
 
-  static set projects(obj) {
+  static set setProjects(obj) {
     Project.#projects.push(obj);
   }
-  static get projects() {
+  static get setProjects() {
     return Project.#projects;
   }
 

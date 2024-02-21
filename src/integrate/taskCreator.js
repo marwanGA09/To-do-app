@@ -26,7 +26,7 @@ function createTaskFunction(ev) {
       if (dataInput.tittle != "") {
         // console.log("after", dataInput);
 
-        const currentProject = Project.projects[currentIndex];
+        const currentProject = Project.setProjects[currentIndex];
         const task = new TaskClass(
           dataInput.tittle,
           dataInput.description,
