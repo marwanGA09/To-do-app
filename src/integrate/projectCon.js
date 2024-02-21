@@ -44,12 +44,10 @@ addProject.addEventListener("click", (ev) => {
   });
 });
 
-// console.log(addProject);
-// console.log(dialog2);
 createProjectItemFunction("Study");
 createProjectItemFunction("Shopping");
 createProjectItemFunction("Entertainment");
-const defaultData = [
+let defaultData = [
   [
     {
       title:
@@ -187,33 +185,29 @@ const defaultData = [
   ],
 ];
 
-for (let i = 0; i < Project.projects.length; i++) {
-  for (let j = 0; j < 4; j++) {
-    let currentTask = defaultData[i][j];
-    const task = new TaskClass(
-      currentTask["title"],
-      currentTask["description"],
-      new Date(currentTask["dueDate"]),
-      Project.projects[i].name,
-      currentTask["priority"]
-    );
-    Project.projects[i].projectsItem = task.getObject();
+assignTask(defaultData);
 
-    // console.log(`Task is created  ${i} ${j}`);
-  }
-  if (!localStorage.getItem(`${Project.projects[i].name.toLowerCase()}`)) {
-    localStorage.setItem(
-      `${Project.projects[i].name.toLowerCase()}`,
-      JSON.stringify(Project.projects[i].projectsItem)
-    );
+function assignTask(data) {
+  for (let i = 0; i < Project.projects.length; i++) {
+    for (let j = 0; j < 4; j++) {
+      let currentTask = data[i][j];
+
+      const task = new TaskClass(
+        currentTask["title"],
+        currentTask["description"],
+        new Date(currentTask["dueDate"]),
+        Project.projects[i].name,
+        currentTask["priority"]
+      );
+      Project.projects[i].projectsItem = task.getObject();
+    }
+    // if (!localStorage.getItem(`${Project.projects[i].name.toLowerCase()}`)) {
+    //   localStorage.setItem(
+    //     `${Project.projects[i].name.toLowerCase()}`,
+    //     JSON.stringify(Project.projects[i].projectsItem)
+    //   );
+    // }
   }
 }
-localStorage.clear();
 
-// localStorage.setItem("test", "klsdjfklajd");
-// const refactored = [
-//   JSON.parse(localStorage.getItem(`${Project.projects[0].name.toLowerCase()}`)),
-// ];
-// console.log(refactored);
-// console.log(defaultData[0]);
 defaultRender();
