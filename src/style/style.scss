@@ -119,6 +119,30 @@ body {
       input {
         margin-left: -1.5rem;
       }
+      &[data-priority] {
+        position: relative;
+      }
+      &[data-priority]::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 1rem;
+        border-radius: 0.3rem 0 0 0.3rem;
+        left: -0.5rem;
+      }
+
+      &[data-priority="1"]::before {
+        background-color: #ff0000;
+      }
+      &[data-priority="2"]::before {
+        background-color: #ffa500;
+      }
+      &[data-priority="3"]::before {
+        background-color: #ffff00;
+      }
+      &[data-priority="4"]::before {
+        background-color: #008000;
+      }
     }
   }
 }
