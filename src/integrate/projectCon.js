@@ -19,6 +19,7 @@ function createProjectItemFunction(projectObjectName) {
   const projectItemsArray = document.querySelectorAll(".project-item");
   projectItemsArray.forEach((item, projectIndex) => {
     item.addEventListener("click", (ev) => {
+      // let renderingParameter = ev.currentTarget.dataset.project;
       renderTasks(ev);
 
       const card = document.querySelectorAll(".card");
@@ -35,6 +36,17 @@ function createProjectItemFunction(projectObjectName) {
               .getOriginalProjectItem()
               [objIndex].isDoneChanger();
             Project.setProjects[proIndex].setOriginalProjectItem();
+          }
+          if (ev.target.className == "btn-del-elm") {
+            console.log(Project.setProjects[proIndex].getOriginalProjectItem());
+            console.log(
+              Project.setProjects[proIndex]
+                .getOriginalProjectItem()
+                .splice(objIndex, 1)
+            );
+            console.log(Project.setProjects[proIndex].getOriginalProjectItem());
+            Project.setProjects[proIndex].setOriginalProjectItem();
+            renderTasks(proIndex);
           }
         });
       });
@@ -239,8 +251,9 @@ let defaultData = [
 
 // console.log(JSON.parse(localStorage.getItem(Project.setProjects[0].name)));
 let localStorageKey = JSON.parse(localStorage.getItem("localStorageKey"));
-
-if (localStorage.getItem(localStorage.getItem("localStorageKey")[0]) != null) {
+// console.log(localStorageKey);
+// console.log(localStorageKey[0]);
+if (localStorageKey != null) {
   console.log(localStorage.getItem("localStorageKey"));
   let dataContainer = [];
 
