@@ -201,12 +201,6 @@ function assignTask(data) {
       );
       Project.setProjects[i].projectsItem = task.getObject();
     }
-    // if (!localStorage.getItem(`${Project.setProjects[i].name.toLowerCase()}`)) {
-    //   localStorage.setItem(
-    //     `${Project.setProjects[i].name.toLowerCase()}`,
-    //     JSON.stringify(Project.setProjects[i].projectsItem)
-    //   );
-    // }
   }
 }
 
