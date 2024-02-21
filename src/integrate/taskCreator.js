@@ -1,5 +1,4 @@
 import { Project } from "../app/Project";
-import { TaskClass } from "./../app/task.js";
 import { renderTasks } from "./createCardContainer.js";
 
 function createTaskFunction(ev) {
@@ -10,34 +9,28 @@ function createTaskFunction(ev) {
 
   const cancelTask = document.querySelector(".cancel-task");
   modal.showModal();
-  // console.log(cancelTask);
   cancelTask.addEventListener("click", () => {
     modal.close();
-    // console.log("close task");
   });
 
   addTask.addEventListener(
     "click",
     () => {
-      // console.log("add task");
       let dataInput = Object.fromEntries(new FormData(formData));
       clearForm(modal);
-      // console.log("before", dataInput, dataInput.tittle);
       if (dataInput.tittle != "") {
-        // console.log("after", dataInput);
-
         const currentProject = Project.setProjects[currentIndex];
-        const task = new TaskClass(
-          dataInput.tittle,
-          dataInput.description,
-          new Date(dataInput["due-date"]),
-          currentProject.name,
-          dataInput.priority
-        );
-        // console.log(task);
-        currentProject.projectsItem = task.getObject();
-
-        renderTasks(currentIndex);
+        import("./../app/task.js").then(({ TaskClass }) => {
+          const task = new TaskClass(
+            dataInput.tittle,
+            dataInput.description,
+            new Date(dataInput["due-date"]),
+            currentProject.name,
+            dataInput.priority
+          );
+          currentProject.projectsItem = task.getObject();
+          renderTasks(currentIndex);
+        });
       }
     },
     { once: true }
@@ -47,8 +40,6 @@ function createTaskFunction(ev) {
 export function addItemEventLister(addItem) {
   addItem.forEach((item) => item.addEventListener("click", createTaskFunction));
 }
-
-// createTaskFunction();
 
 function clearForm(modal) {
   const tittle = document.querySelector("#tittle");

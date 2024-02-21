@@ -5,7 +5,7 @@ import { defaultRender, renderTasks } from "./createCardContainer";
 import { addItemEventLister } from "./taskCreator";
 
 const projectItems = document.querySelector(".project-items");
-export function createProjectItemFunction(projectObjectName) {
+function createProjectItemFunction(projectObjectName) {
   const project1 = new Project(projectObjectName);
   const ul = new CreateProjectItem().createLI(
     project1.name,
@@ -17,8 +17,41 @@ export function createProjectItemFunction(projectObjectName) {
   addItemEventLister(addItems);
 
   const projectItemsArray = document.querySelectorAll(".project-item");
-  projectItemsArray.forEach((item) => {
-    item.addEventListener("click", renderTasks);
+  projectItemsArray.forEach((item, projectIndex) => {
+    item.addEventListener("click", (ev) => {
+      renderTasks(ev);
+
+      const card = document.querySelectorAll(".card");
+      card.forEach((ca) => {
+        ca.addEventListener("click", (ev) => {
+          console.log("target", ev.target);
+          console.log("currentTarget", ev.currentTarget);
+          let objIndex = ev.currentTarget.dataset.objectIndex;
+          let proIndex = ev.currentTarget.dataset.projectIndex;
+          console.log(Project.setProjects[proIndex]);
+          Project.setProjects[proIndex]
+            .getOriginalProjectItem()
+            [objIndex].isDoneChanger();
+          Project.setProjects[proIndex].setOriginalProjectItem();
+        });
+      });
+
+      // //////
+      // const isDoneRadio = document.querySelectorAll(".is-done");
+      // // console.log(isDoneRadio);
+      // isDoneRadio.forEach((rad) => {
+      //   rad.addEventListener("change", (ev) => {
+      //     console.log("is done is clicked");
+      //     let objIndex = ev.target.dataset.index;
+      //     console.log(projectIndex);
+      //     console.log(objIndex);
+      //     console.log(Project.setProjects);
+      //     let projectArray = Project.setProjects[projectIndex];
+      //     console.log(projectArray.projectsItem[objIndex]);
+      //   });
+      // });
+      //////
+    });
   });
 }
 
@@ -203,46 +236,6 @@ let defaultData = [
 
 // console.log(JSON.parse(localStorage.getItem(Project.setProjects[0].name)));
 let localStorageKey = JSON.parse(localStorage.getItem("localStorageKey"));
-
-// console.log(defaultData);
-// console.log(dataContainer);
-
-// for (let i = 0; i < dataContainer.length; i++) {
-//   for (let j = 0; j < dataContainer[i].length; j++) {
-//     let currentTask = dataContainer[i][j];
-//     console.log(currentTask["tittle"]);
-//     console.log(currentTask["description"]);
-//     console.log(currentTask["dueDate"]);
-//     console.log(currentTask["category"]);
-//     console.log(currentTask["priority"]);
-//   }
-// }
-
-// localStorage.clear();
-// for (
-//   let j = 0;
-//   j < JSON.parse(localStorage.getItem(localStorageKey[i])).length;
-//   j++
-// ) {
-//   console.log(JSON.parse(localStorage.getItem(localStorageKey[i]))[j]);
-
-//   let currentTask = JSON.parse(localStorage.getItem(localStorageKey[i]))[j];
-
-//   const task = new TaskClass(
-//     currentTask["tittle"],
-//     currentTask["description"],
-//     new Date(currentTask["dueDate"]),
-//     currentTask["category"],
-//     currentTask["priority"]
-//   );
-//   Project.setProjects[i].projectsItem = task.getObject();
-// }
-// if (localStorage.length > 0) {
-//   console.log("there is local storage");
-//   console.log(localStorage.length);
-//   console.log(localStorage.getItem("localStorageKey"));
-//   console.log(localStorageKey);
-// }
 
 if (localStorage.getItem("localStorageKey") != null) {
   console.log(localStorage.getItem("localStorageKey"));

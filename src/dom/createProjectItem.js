@@ -22,8 +22,3 @@ export class CreateProjectItem {
     return li;
   }
 }
-
-// const li = new createProjectItem();
-// console.log(li);
-// const liItem = li.createLI("reading");
-// console.log(liItem);

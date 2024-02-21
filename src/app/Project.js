@@ -21,9 +21,15 @@ export class Project {
     return Project.#projects;
   }
 
+  getOriginalProjectItem() {
+    return this.#projectItems;
+  }
+  setOriginalProjectItem() {
+    localStorage.setItem(`${this.#name}`, JSON.stringify(this.#projectItems));
+  }
+
   set projectsItem(itemObj) {
     this.#projectItems.push(itemObj);
-    localStorage.setItem(`${this.#name}`, JSON.stringify(this.#projectItems));
     localStorage.setItem(
       "localStorageKey",
       JSON.stringify(Project.#projectNames)
