@@ -44,10 +44,6 @@ addProject.addEventListener("click", (ev) => {
   });
 });
 
-createProjectItemFunction("study");
-createProjectItemFunction("shopping");
-createProjectItemFunction("entertainment");
-
 let defaultData = [
   [
     {
@@ -255,9 +251,18 @@ for (let i = 0; i < localStorageKey.length; i++) {
 // }
 
 if (localStorage.getItem("localStorageKey").length > 0) {
+  let local = JSON.parse(localStorage.getItem("localStorageKey"));
+  for (let i = 0; i < local.length; i++) {
+    createProjectItemFunction(local[i]);
+  }
+
   assignTask(dataContainer);
   console.log("from local storage");
 } else {
+  createProjectItemFunction("study");
+  createProjectItemFunction("shopping");
+  createProjectItemFunction("entertainment");
+
   assignTask(defaultData);
   console.log("from default");
 }
