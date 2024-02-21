@@ -1,11 +1,21 @@
 export class Project {
   static #projects = [];
+  static #projectNames = [];
   #name;
   #projectItems;
   constructor(name) {
     this.#name = name;
     this.#projectItems = [];
     Project.setProjects = this;
+    Project.setProjectsName = this.#name;
+  }
+
+  static set setProjectsName(obj) {
+    Project.#projectNames.push(obj);
+    localStorage.setItem(
+      "localStorageKey",
+      JSON.stringify(Project.#projectNames)
+    );
   }
 
   static set setProjects(obj) {
