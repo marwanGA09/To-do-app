@@ -37,7 +37,11 @@ export class Project {
   }
   get projectsItem() {
     // return this.#projectItems;
-    return JSON.parse(localStorage.getItem(`${this.#name}`));
+    if (localStorage.getItem(`${this.#name}`)) {
+      return JSON.parse(localStorage.getItem(`${this.#name}`));
+    } else {
+      return this.#projectItems;
+    }
   }
 
   get name() {

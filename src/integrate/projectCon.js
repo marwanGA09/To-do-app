@@ -28,11 +28,14 @@ function createProjectItemFunction(projectObjectName) {
           console.log("currentTarget", ev.currentTarget);
           let objIndex = ev.currentTarget.dataset.objectIndex;
           let proIndex = ev.currentTarget.dataset.projectIndex;
-          console.log(Project.setProjects[proIndex]);
-          Project.setProjects[proIndex]
-            .getOriginalProjectItem()
-            [objIndex].isDoneChanger();
-          Project.setProjects[proIndex].setOriginalProjectItem();
+          // console.log(Project.setProjects[proIndex]);
+          // console.log(ev.target.className);
+          if (ev.target.className == "is-done") {
+            Project.setProjects[proIndex]
+              .getOriginalProjectItem()
+              [objIndex].isDoneChanger();
+            Project.setProjects[proIndex].setOriginalProjectItem();
+          }
         });
       });
 
@@ -237,7 +240,7 @@ let defaultData = [
 // console.log(JSON.parse(localStorage.getItem(Project.setProjects[0].name)));
 let localStorageKey = JSON.parse(localStorage.getItem("localStorageKey"));
 
-if (localStorage.getItem("localStorageKey") != null) {
+if (localStorage.getItem(localStorage.getItem("localStorageKey")[0]) != null) {
   console.log(localStorage.getItem("localStorageKey"));
   let dataContainer = [];
 
