@@ -1,5 +1,6 @@
 export class TaskCard {
   static createCard(obj) {
+    // console.log(obj)
     const card = document.createElement("div");
     card.classList.add("card");
     card.dataset.priority = obj.priority;
