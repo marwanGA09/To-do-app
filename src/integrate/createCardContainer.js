@@ -4,12 +4,13 @@ import { TaskCard } from "../dom/createTaskCard";
 // render Default
 export function defaultRender() {
   const displayCard = document.querySelector(".card-display");
+  let projectsArray = Project.setProjects[0].projectsItem;
 
-  let project0 = Project.setProjects[0].projectsItem;
-
-  project0.forEach((obj) => {
-    let card = TaskCard.createCard(obj);
-    displayCard.appendChild(card);
+  projectsArray.forEach((obj, index) => {
+    if (obj != null) {
+      let card = TaskCard.createCard(obj, index);
+      displayCard.appendChild(card);
+    }
   });
 }
 export function renderTasks(ev) {
@@ -19,11 +20,14 @@ export function renderTasks(ev) {
   let index = Number.isInteger(+ev) ? ev : ev.currentTarget.dataset.project;
 
   let currentProject = Project.setProjects[index].projectsItem;
-
-  currentProject.forEach((obj) => {
-    let card = TaskCard.createCard(obj);
-    displayCard.appendChild(card);
-  });
+  // currentProject = currentProject.filter((project) => project != null);
+  // console.log(currentProject);
+  if (currentProject != null) {
+    currentProject.forEach((obj, index) => {
+      let card = TaskCard.createCard(obj, index);
+      displayCard.appendChild(card);
+    });
+  }
 }
 
 function removeCards() {
