@@ -9,7 +9,7 @@ export function createProjectItemFunction(projectObjectName) {
   const project1 = new Project(projectObjectName);
   const ul = new CreateProjectItem().createLI(
     project1.name,
-    Project.projects.length
+    Project.setProjects.length
   );
   projectItems.appendChild(ul);
 
@@ -188,7 +188,7 @@ let defaultData = [
 assignTask(defaultData);
 
 function assignTask(data) {
-  for (let i = 0; i < Project.projects.length; i++) {
+  for (let i = 0; i < Project.setProjects.length; i++) {
     for (let j = 0; j < 4; j++) {
       let currentTask = data[i][j];
 
@@ -196,15 +196,15 @@ function assignTask(data) {
         currentTask["title"],
         currentTask["description"],
         new Date(currentTask["dueDate"]),
-        Project.projects[i].name,
+        Project.setProjects[i].name,
         currentTask["priority"]
       );
-      Project.projects[i].projectsItem = task.getObject();
+      Project.setProjects[i].projectsItem = task.getObject();
     }
-    // if (!localStorage.getItem(`${Project.projects[i].name.toLowerCase()}`)) {
+    // if (!localStorage.getItem(`${Project.setProjects[i].name.toLowerCase()}`)) {
     //   localStorage.setItem(
-    //     `${Project.projects[i].name.toLowerCase()}`,
-    //     JSON.stringify(Project.projects[i].projectsItem)
+    //     `${Project.setProjects[i].name.toLowerCase()}`,
+    //     JSON.stringify(Project.setProjects[i].projectsItem)
     //   );
     // }
   }
