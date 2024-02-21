@@ -22,6 +22,9 @@ export class TaskClass {
   get tittle() {
     return this.#tittle;
   }
+  get description() {
+    return this.#description;
+  }
   get date() {
     return this.#date;
   }
@@ -35,8 +38,10 @@ export class TaskClass {
   getObject() {
     return {
       tittle: this.tittle,
+      description: this.description,
       date: this.date.toDateString(),
       time: this.date.toLocaleTimeString(),
+      dueDate: this.date,
       category: this.category,
       isDone: this.isDone,
       priority: this.priority,
