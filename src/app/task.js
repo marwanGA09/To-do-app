@@ -23,11 +23,33 @@ export class TaskClass {
   isDoneChanger() {
     this.isDone = this.isDone ? false : true;
   }
+  updateTittle(tittle) {
+    this.tittle = tittle;
+  }
+  updateDescription(description) {
+    this.description = description;
+  }
+  updateDate(date) {
+    this.date = date;
+  }
+  updateCategory(category) {
+    this.category = category;
+  }
+
   get isDone() {
     return this.#isDone;
   }
   set isDone(val) {
     this.#isDone = val;
+  }
+  set tittle(val) {
+    this.#tittle = val;
+  }
+  set description(val) {
+    this.#description = val;
+  }
+  set date(val) {
+    this.#date = val;
   }
   get tittle() {
     return this.#tittle;
@@ -56,6 +78,10 @@ export class TaskClass {
       isDone: this.isDone,
       priority: this.priority,
       isDoneChanger: this.isDoneChanger,
+      updateTittle: this.updateTittle,
+      updateCategory: this.updateCategory,
+      updateDescription: this.updateDescription,
+      updateDate: this.updateDate,
     };
   }
 }
