@@ -5,11 +5,15 @@ function createTaskFunction(ev) {
   let currentIndex = ev.target.dataset.index;
   const modal = document.querySelector(".modal");
   const formData = document.querySelector(".item-form");
-  const addTask = document.querySelector(".add-task");
 
   const cancelTask = document.querySelector(".cancel-task");
+  const addTask = document.querySelector(".add-task");
   modal.showModal();
+
+  cancelTask.textContent = "Cancel";
+  addTask.textContent = "Add Task";
   cancelTask.addEventListener("click", () => {
+    clearForm(modal);
     modal.close();
   });
 
@@ -41,7 +45,7 @@ export function addItemEventLister(addItem) {
   addItem.forEach((item) => item.addEventListener("click", createTaskFunction));
 }
 
-function clearForm(modal) {
+export function clearForm(modal) {
   const tittle = document.querySelector("#tittle");
   const description = document.querySelector("#description");
   const dueDate = document.querySelector("#due-date");
