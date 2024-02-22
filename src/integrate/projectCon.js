@@ -317,31 +317,31 @@ function assignTask(data) {
 }
 
 defaultRender();
-// const card = document.querySelectorAll(".card");
-// card.forEach((ca) => {
-//   ca.addEventListener("click", (ev) => {
-//     console.log("target", ev.target);
-//     console.log("currentTarget", ev.currentTarget);
-//     let objIndex = ev.currentTarget.dataset.objectIndex;
-//     let proIndex = ev.currentTarget.dataset.projectIndex;
-//     // console.log(Project.setProjects[proIndex]);
-//     // console.log(ev.target.className);
-//     if (ev.target.className == "is-done") {
-//       Project.setProjects[proIndex]
-//         .getOriginalProjectItem()
-//         [objIndex].isDoneChanger();
-//       Project.setProjects[proIndex].setOriginalProjectItem();
-//     }
-//     if (ev.target.className == "btn-del-elm") {
-//       console.log(Project.setProjects[proIndex].getOriginalProjectItem());
-//       console.log(
-//         Project.setProjects[proIndex]
-//           .getOriginalProjectItem()
-//           .splice(objIndex, 1)
-//       );
-//       console.log(Project.setProjects[proIndex].getOriginalProjectItem());
-//       Project.setProjects[proIndex].setOriginalProjectItem();
-//       renderTasks(proIndex);
-//     }
-//   });
-// });
+const card = document.querySelectorAll(".card");
+card.forEach((ca) => {
+  ca.addEventListener("click", (ev) => {
+    console.log("target", ev.target);
+    console.log("currentTarget", ev.currentTarget);
+    let objIndex = ev.currentTarget.dataset.objectIndex;
+    let proIndex = ev.currentTarget.dataset.projectIndex;
+    // console.log(Project.setProjects[proIndex]);
+    // console.log(ev.target.className);
+    if (ev.target.className == "is-done") {
+      Project.setProjects[proIndex]
+        .getOriginalProjectItem()
+        [objIndex].isDoneChanger();
+      Project.setProjects[proIndex].setOriginalProjectItem();
+    }
+    if (ev.target.className == "btn-del-elm") {
+      console.log(Project.setProjects[proIndex].getOriginalProjectItem());
+      console.log(
+        Project.setProjects[proIndex]
+          .getOriginalProjectItem()
+          .splice(objIndex, 1)
+      );
+      console.log(Project.setProjects[proIndex].getOriginalProjectItem());
+      Project.setProjects[proIndex].setOriginalProjectItem();
+      renderTasks(proIndex);
+    }
+  });
+});
