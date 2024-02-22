@@ -251,9 +251,11 @@ let defaultData = [
 
 // console.log(JSON.parse(localStorage.getItem(Project.setProjects[0].name)));
 let localStorageKey = JSON.parse(localStorage.getItem("localStorageKey"));
+console.log(localStorageKey);
 // console.log(localStorageKey);
 // console.log(localStorageKey[0]);
 if (localStorageKey != null) {
+  console.log("local");
   console.log(localStorage.getItem("localStorageKey"));
   let dataContainer = [];
 
@@ -269,12 +271,12 @@ if (localStorageKey != null) {
   assignTask(dataContainer);
   console.log("from local storage");
 } else {
+  console.log("from default");
   createProjectItemFunction("study");
   createProjectItemFunction("shopping");
   createProjectItemFunction("entertainment");
 
   assignTask(defaultData);
-  console.log("from default");
 }
 function assignTask(data) {
   for (let i = 0; i < data.length; i++) {
@@ -290,6 +292,7 @@ function assignTask(data) {
       );
       Project.setProjects[i].projectsItem = task.getObject();
     }
+    Project.setProjects[i].setOriginalProjectItem();
   }
 }
 
