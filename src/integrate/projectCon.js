@@ -76,21 +76,26 @@ function createProjectItemFunction(projectObjectName) {
               modal.close();
             });
 
-            addTask.addEventListener("click", () => {
-              let dataInput = Object.fromEntries(new FormData(formData));
-
-              Project.setProjects[proIndex]
-                .getOriginalProjectItem()
-                [objIndex].updateTittle(dataInput.tittle);
-              Project.setProjects[proIndex]
-                .getOriginalProjectItem()
-                [objIndex].updateDescription(dataInput.description);
-              Project.setProjects[proIndex]
-                .getOriginalProjectItem()
-                [objIndex].updateDate(dataInput.dueDate);
-              Project.setProjects[proIndex].setOriginalProjectItem();
-              // renderTasks(proIndex);
-            });
+            addTask.addEventListener(
+              "click",
+              () => {
+                const dataInput = Object.fromEntries(new FormData(formData));
+                // console.log(formData)
+                // console.log(formData)
+                Project.setProjects[proIndex]
+                  .getOriginalProjectItem()
+                  [objIndex].updateTittle(dataInput.tittle);
+                Project.setProjects[proIndex]
+                  .getOriginalProjectItem()
+                  [objIndex].updateDescription(dataInput.description);
+                Project.setProjects[proIndex]
+                  .getOriginalProjectItem()
+                  [objIndex].updateDate(dataInput.dueDate);
+                Project.setProjects[proIndex].setOriginalProjectItem();
+                renderTasks(proIndex);
+              },
+              { once: true }
+            );
           }
         });
       });
