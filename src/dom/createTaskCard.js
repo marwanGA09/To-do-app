@@ -9,7 +9,7 @@ export class TaskCard {
     card.appendChild(TaskCard.#createTittleSpan(obj.tittle));
     card.appendChild(TaskCard.#createTimeSpan(obj.time)); // need some code
     card.appendChild(TaskCard.#createDateSpan(obj.date)); // need some code
-    card.appendChild(TaskCard.#createEditBtn());
+    // card.appendChild(TaskCard.#createEditBtn());
     card.appendChild(TaskCard.#createLabel());
     card.appendChild(TaskCard.#createIsDone(obj.isDone));
     card.appendChild(TaskCard.#createViewBtn());
@@ -38,12 +38,12 @@ export class TaskCard {
     date.textContent = dateValue; // change to date only
     return date;
   }
-  static #createEditBtn() {
-    const btn = document.createElement("button");
-    btn.classList.add("btn-edit-elm");
-    btn.textContent = "Edit 🛠️"; // change to btn only
-    return btn;
-  }
+  // static #createEditBtn() {
+  //   const btn = document.createElement("button");
+  //   btn.classList.add("btn-edit-elm");
+  //   btn.textContent = "Edit 🛠️"; // change to btn only
+  //   return btn;
+  // }
   static #createIsDone(isDone) {
     const input = document.createElement("input");
     input.type = "checkbox";
