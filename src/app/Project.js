@@ -34,14 +34,23 @@ export class Project {
       "localStorageKey",
       JSON.stringify(Project.#projectNames)
     );
+    localStorage.setItem(`${this.#name}`, JSON.stringify(this.#projectItems));
   }
   get projectsItem() {
     // return this.#projectItems;
     if (localStorage.getItem(`${this.#name}`)) {
+      // console.log("*** from local storage");
+      // console.log(
+      //   "with in getProjectItem",
+      //   JSON.parse(localStorage.getItem(`${this.#name}`))
+      // );
       return JSON.parse(localStorage.getItem(`${this.#name}`));
-    } else {
-      return this.#projectItems;
     }
+    // else {
+    //   console.log("*** from if there no local storage");
+    //   console.log(this.#projectItems);
+    //   return this.#projectItems;
+    // }
   }
 
   get name() {

@@ -5,13 +5,20 @@ export class TaskClass {
   #category;
   #priority;
   #isDone;
-  constructor(tittle, description = "", date, category, priority = 3) {
+  constructor(
+    tittle,
+    description = "",
+    date,
+    category,
+    priority = 3,
+    isDone = false
+  ) {
     this.#tittle = tittle;
     this.#description = description;
     this.#date = date;
     this.#category = category;
     this.#priority = priority;
-    this.#isDone = false;
+    this.#isDone = isDone;
   }
   isDoneChanger() {
     this.isDone = this.isDone ? false : true;
