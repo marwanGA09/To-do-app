@@ -2,7 +2,7 @@ import { Project } from "../app/Project";
 import { TaskClass } from "../app/task";
 import { CreateProjectItem } from "../dom/createProjectItem";
 import { defaultRender, renderTasks } from "./createCardContainer";
-import { addItemEventLister } from "./taskCreator";
+import { addItemEventLister, clearForm } from "./taskCreator";
 
 const projectItems = document.querySelector(".project-items");
 function createProjectItemFunction(projectObjectName) {
@@ -48,24 +48,52 @@ function createProjectItemFunction(projectObjectName) {
             Project.setProjects[proIndex].setOriginalProjectItem();
             renderTasks(proIndex);
           }
+
+          if (ev.target.className == "view") {
+            const modal = document.querySelector(".modal");
+            const formData = document.querySelector(".item-form");
+
+            const cancelBtn = document.querySelector(".cancel-task");
+            const addTask = document.querySelector(".add-task");
+            cancelBtn.textContent = "Exit";
+            addTask.textContent = "Save and Exit";
+
+            modal.showModal();
+
+            const tittle = document.querySelector("#tittle");
+            const description = document.querySelector("#description");
+            const dueDate = document.querySelector("#due-date");
+            tittle.value =
+              Project.setProjects[proIndex].projectsItem[objIndex].tittle;
+            description.value =
+              Project.setProjects[proIndex].projectsItem[objIndex].description;
+
+            let date =
+              Project.setProjects[proIndex].projectsItem[objIndex].dueDate;
+            dueDate.value = new Date(date).toISOString().slice(0, 19);
+            cancelBtn.addEventListener("click", () => {
+              clearForm(modal);
+              modal.close();
+            });
+
+            addTask.addEventListener("click", () => {
+              let dataInput = Object.fromEntries(new FormData(formData));
+
+              Project.setProjects[proIndex]
+                .getOriginalProjectItem()
+                [objIndex].updateTittle(dataInput.tittle);
+              Project.setProjects[proIndex]
+                .getOriginalProjectItem()
+                [objIndex].updateDescription(dataInput.description);
+              Project.setProjects[proIndex]
+                .getOriginalProjectItem()
+                [objIndex].updateDate(dataInput.dueDate);
+              Project.setProjects[proIndex].setOriginalProjectItem();
+              // renderTasks(proIndex);
+            });
+          }
         });
       });
-
-      // //////
-      // const isDoneRadio = document.querySelectorAll(".is-done");
-      // // console.log(isDoneRadio);
-      // isDoneRadio.forEach((rad) => {
-      //   rad.addEventListener("change", (ev) => {
-      //     console.log("is done is clicked");
-      //     let objIndex = ev.target.dataset.index;
-      //     console.log(projectIndex);
-      //     console.log(objIndex);
-      //     console.log(Project.setProjects);
-      //     let projectArray = Project.setProjects[projectIndex];
-      //     console.log(projectArray.projectsItem[objIndex]);
-      //   });
-      // });
-      //////
     });
   });
 }
