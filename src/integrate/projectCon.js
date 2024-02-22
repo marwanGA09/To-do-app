@@ -102,6 +102,7 @@ let defaultData = [
       dueDate: "2024-03-15T23:59:59",
       priority: 2,
       category: "study",
+      isDone: false,
     },
     {
       tittle: "Read 'Clean Code: A Handbook of Agile Software Craftsmanship'",
@@ -110,6 +111,7 @@ let defaultData = [
       dueDate: "2024-03-10T18:00:00",
       priority: 3,
       category: "study",
+      isDone: false,
     },
     {
       tittle: "Attend Machine Learning Workshop",
@@ -118,6 +120,7 @@ let defaultData = [
       dueDate: "2024-03-08T09:00:00",
       priority: 1,
       category: "study",
+      isDone: false,
     },
     {
       tittle: "Study Arabic Grammar",
@@ -126,6 +129,7 @@ let defaultData = [
       dueDate: "2024-03-20T20:00:00",
       priority: 4,
       category: "study",
+      isDone: false,
     },
     {
       tittle: "Complete React Native Project",
@@ -134,6 +138,7 @@ let defaultData = [
       dueDate: "2024-03-25T15:30:00",
       priority: 2,
       category: "study",
+      isDone: false,
     },
     {
       tittle: "Prepare for Computer Science Exam",
@@ -142,6 +147,7 @@ let defaultData = [
       dueDate: "2024-03-12T12:00:00",
       priority: 3,
       category: "study",
+      isDone: false,
     },
   ],
   [
@@ -152,6 +158,7 @@ let defaultData = [
       dueDate: "2024-03-05T16:00:00",
       priority: 2,
       category: "shopping",
+      isDone: false,
     },
     {
       tittle: " Purchase New Video Games",
@@ -160,6 +167,7 @@ let defaultData = [
       dueDate: "2024-03-08T20:00:00",
       priority: 3,
       category: "shopping",
+      isDone: false,
     },
     {
       tittle: " Update Wardrobe for Spring",
@@ -168,6 +176,7 @@ let defaultData = [
       dueDate: "2024-03-12T12:00:00",
       priority: 1,
       category: "shopping",
+      isDone: false,
     },
     {
       tittle: "Buy Gardening Supplies",
@@ -176,6 +185,7 @@ let defaultData = [
       dueDate: "2024-03-18T10:00:00",
       priority: 4,
       category: "shopping",
+      isDone: false,
     },
     {
       tittle: "Upgrade Home Entertainment System",
@@ -184,6 +194,7 @@ let defaultData = [
       dueDate: "2024-03-20T15:30:00",
       priority: 2,
       category: "shopping",
+      isDone: false,
     },
     {
       tittle: " Stock Up on Pet Food and Toys",
@@ -192,6 +203,7 @@ let defaultData = [
       dueDate: "2024-03-15T14:00:00",
       priority: 3,
       category: "shopping",
+      isDone: false,
     },
   ],
 
@@ -204,6 +216,7 @@ let defaultData = [
       dueDate: "2024-03-05T20:00:00",
       priority: 2,
       category: "entertainment",
+      isDone: false,
     },
     {
       tittle: "Game Night with Friends: Play 'Among Us' Online",
@@ -212,6 +225,7 @@ let defaultData = [
       dueDate: "2024-03-08T19:00:00",
       priority: 3,
       category: "entertainment",
+      isDone: false,
     },
     {
       tittle: "Weekend Picnic in the Park",
@@ -220,6 +234,7 @@ let defaultData = [
       dueDate: "2024-03-12T12:30:00",
       priority: 1,
       category: "entertainment",
+      isDone: false,
     },
     {
       tittle: "Family Board Game Tournament",
@@ -228,6 +243,7 @@ let defaultData = [
       dueDate: "2024-03-18T16:00:00",
       priority: 4,
       category: "entertainment",
+      isDone: false,
     },
     {
       tittle:
@@ -237,6 +253,7 @@ let defaultData = [
       dueDate: "2024-03-20T02:00:00",
       priority: 2,
       category: "entertainment",
+      isDone: false,
     },
     {
       tittle: "DIY Craft Night with Family",
@@ -245,6 +262,7 @@ let defaultData = [
       dueDate: "2024-03-15T18:30:00",
       priority: 3,
       category: "entertainment",
+      isDone: false,
     },
   ],
 ];
@@ -255,8 +273,8 @@ console.log(localStorageKey);
 // console.log(localStorageKey);
 // console.log(localStorageKey[0]);
 if (localStorageKey != null) {
-  console.log("local");
-  console.log(localStorage.getItem("localStorageKey"));
+  // console.log("local");
+  // console.log(localStorage.getItem("localStorageKey"));
   let dataContainer = [];
 
   for (let i = 0; i < localStorageKey.length; i++) {
@@ -267,7 +285,7 @@ if (localStorageKey != null) {
   for (let i = 0; i < local.length; i++) {
     createProjectItemFunction(local[i]);
   }
-  console.log(dataContainer);
+  console.log("########## datacontainer", dataContainer);
   assignTask(dataContainer);
   console.log("from local storage");
 } else {
@@ -275,7 +293,7 @@ if (localStorageKey != null) {
   createProjectItemFunction("study");
   createProjectItemFunction("shopping");
   createProjectItemFunction("entertainment");
-
+  console.log("$$$$$$$$$$$defaultdata", defaultData);
   assignTask(defaultData);
 }
 function assignTask(data) {
@@ -288,12 +306,42 @@ function assignTask(data) {
         currentTask["description"],
         new Date(currentTask["dueDate"]),
         currentTask["category"],
-        currentTask["priority"]
+        currentTask["priority"],
+        currentTask["isDone"]
       );
       Project.setProjects[i].projectsItem = task.getObject();
     }
-    Project.setProjects[i].setOriginalProjectItem();
+    // Project.setProjects[i].setOriginalProjectItem();
   }
+  // console.log("after assign", Project.setProjects[0].projectItems);
 }
 
 defaultRender();
+// const card = document.querySelectorAll(".card");
+// card.forEach((ca) => {
+//   ca.addEventListener("click", (ev) => {
+//     console.log("target", ev.target);
+//     console.log("currentTarget", ev.currentTarget);
+//     let objIndex = ev.currentTarget.dataset.objectIndex;
+//     let proIndex = ev.currentTarget.dataset.projectIndex;
+//     // console.log(Project.setProjects[proIndex]);
+//     // console.log(ev.target.className);
+//     if (ev.target.className == "is-done") {
+//       Project.setProjects[proIndex]
+//         .getOriginalProjectItem()
+//         [objIndex].isDoneChanger();
+//       Project.setProjects[proIndex].setOriginalProjectItem();
+//     }
+//     if (ev.target.className == "btn-del-elm") {
+//       console.log(Project.setProjects[proIndex].getOriginalProjectItem());
+//       console.log(
+//         Project.setProjects[proIndex]
+//           .getOriginalProjectItem()
+//           .splice(objIndex, 1)
+//       );
+//       console.log(Project.setProjects[proIndex].getOriginalProjectItem());
+//       Project.setProjects[proIndex].setOriginalProjectItem();
+//       renderTasks(proIndex);
+//     }
+//   });
+// });
