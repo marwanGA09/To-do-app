@@ -19,7 +19,6 @@ function createProjectItemFunction(projectObjectName) {
   const projectItemsArray = document.querySelectorAll(".project-item");
   projectItemsArray.forEach((item, projectIndex) => {
     item.addEventListener("click", (ev) => {
-      // let renderingParameter = ev.currentTarget.dataset.project;
       renderTasks(ev);
 
       const card = document.querySelectorAll(".card");
@@ -29,8 +28,6 @@ function createProjectItemFunction(projectObjectName) {
           console.log("currentTarget", ev.currentTarget);
           let objIndex = ev.currentTarget.dataset.objectIndex;
           let proIndex = ev.currentTarget.dataset.projectIndex;
-          // console.log(Project.setProjects[proIndex]);
-          // console.log(ev.target.className);
           if (ev.target.className == "is-done") {
             Project.setProjects[proIndex]
               .getOriginalProjectItem()
@@ -48,7 +45,6 @@ function createProjectItemFunction(projectObjectName) {
             Project.setProjects[proIndex].setOriginalProjectItem();
             renderTasks(proIndex);
           }
-
           if (ev.target.className == "view") {
             const modal = document.querySelector(".modal");
             const formData = document.querySelector(".item-form");
@@ -70,7 +66,7 @@ function createProjectItemFunction(projectObjectName) {
 
             let date =
               Project.setProjects[proIndex].projectsItem[objIndex].dueDate;
-            dueDate.value = new Date(date).toISOString().slice(0, 19);
+            dueDate.value = new Date(date).toISOString().slice(0, 16);
             cancelBtn.addEventListener("click", () => {
               clearForm(modal);
               modal.close();
@@ -80,17 +76,19 @@ function createProjectItemFunction(projectObjectName) {
               "click",
               () => {
                 const dataInput = Object.fromEntries(new FormData(formData));
-                // console.log(formData)
-                // console.log(formData)
                 Project.setProjects[proIndex]
                   .getOriginalProjectItem()
                   [objIndex].updateTittle(dataInput.tittle);
                 Project.setProjects[proIndex]
                   .getOriginalProjectItem()
                   [objIndex].updateDescription(dataInput.description);
-                Project.setProjects[proIndex]
-                  .getOriginalProjectItem()
-                  [objIndex].updateDate(dataInput.dueDate);
+
+                // my code is not updating Date and Priority
+
+                // Project.setProjects[proIndex]
+                //   .getOriginalProjectItem()
+                //   [objIndex].updateDate(dataInput["due-date"]);
+
                 Project.setProjects[proIndex].setOriginalProjectItem();
                 renderTasks(proIndex);
               },
@@ -350,6 +348,7 @@ function assignTask(data) {
 }
 
 defaultRender();
+
 const card = document.querySelectorAll(".card");
 card.forEach((ca) => {
   ca.addEventListener("click", (ev) => {
@@ -357,8 +356,6 @@ card.forEach((ca) => {
     console.log("currentTarget", ev.currentTarget);
     let objIndex = ev.currentTarget.dataset.objectIndex;
     let proIndex = ev.currentTarget.dataset.projectIndex;
-    // console.log(Project.setProjects[proIndex]);
-    // console.log(ev.target.className);
     if (ev.target.className == "is-done") {
       Project.setProjects[proIndex]
         .getOriginalProjectItem()
@@ -375,6 +372,56 @@ card.forEach((ca) => {
       console.log(Project.setProjects[proIndex].getOriginalProjectItem());
       Project.setProjects[proIndex].setOriginalProjectItem();
       renderTasks(proIndex);
+    }
+
+    if (ev.target.className == "view") {
+      const modal = document.querySelector(".modal");
+      const formData = document.querySelector(".item-form");
+
+      const cancelBtn = document.querySelector(".cancel-task");
+      const addTask = document.querySelector(".add-task");
+      cancelBtn.textContent = "Exit";
+      addTask.textContent = "Save and Exit";
+
+      modal.showModal();
+
+      const tittle = document.querySelector("#tittle");
+      const description = document.querySelector("#description");
+      const dueDate = document.querySelector("#due-date");
+      tittle.value =
+        Project.setProjects[proIndex].projectsItem[objIndex].tittle;
+      description.value =
+        Project.setProjects[proIndex].projectsItem[objIndex].description;
+
+      let date = Project.setProjects[proIndex].projectsItem[objIndex].dueDate;
+      dueDate.value = new Date(date).toISOString().slice(0, 16);
+      cancelBtn.addEventListener("click", () => {
+        clearForm(modal);
+        modal.close();
+      });
+
+      addTask.addEventListener(
+        "click",
+        () => {
+          const dataInput = Object.fromEntries(new FormData(formData));
+          Project.setProjects[proIndex]
+            .getOriginalProjectItem()
+            [objIndex].updateTittle(dataInput.tittle);
+          Project.setProjects[proIndex]
+            .getOriginalProjectItem()
+            [objIndex].updateDescription(dataInput.description);
+
+          // my code is not updating Date and Priority
+
+          // Project.setProjects[proIndex]
+          //   .getOriginalProjectItem()
+          //   [objIndex].updateDate(dataInput["due-date"]);
+
+          Project.setProjects[proIndex].setOriginalProjectItem();
+          renderTasks(proIndex);
+        },
+        { once: true }
+      );
     }
   });
 });
