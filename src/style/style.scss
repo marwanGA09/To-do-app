@@ -78,6 +78,20 @@ body {
 
   .footer {
     margin-top: auto;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: -0.11rem;
+
+    div {
+      height: 1.3rem;
+    }
+
+    .color {
+      width: 0.51rem;
+      height: 0.51rem;
+      margin-right: 0.41rem;
+    }
 
     a {
       text-decoration: none;
@@ -118,8 +132,6 @@ body {
         padding: 0.65rem 2rem 0.3rem 0;
 
         border-radius: 0.4rem 0 0 0.4rem;
-        // padding-right: ;
-        // z-index: -3;
         background-color: #008000;
       }
     }
@@ -180,19 +192,6 @@ body {
         border-radius: 0.3rem 0 0 0.3rem;
         left: -0.5rem;
       }
-
-      &[data-priority="1"]::before {
-        background-color: #ff0000;
-      }
-      &[data-priority="2"]::before {
-        background-color: #ffa500;
-      }
-      &[data-priority="3"]::before {
-        background-color: #ffff00;
-      }
-      &[data-priority="4"]::before {
-        background-color: #008000;
-      }
     }
   }
 }
@@ -209,4 +208,22 @@ svg {
 button {
   cursor: pointer;
   border: 0;
+}
+
+// color priority
+.card[data-priority="1"]::before,
+.vu {
+  background-color: #ff0000;
+}
+.card[data-priority="2"]::before,
+.u {
+  background-color: #ffa500;
+}
+.card[data-priority="3"]::before,
+.n {
+  background-color: #ffff00;
+}
+.card[data-priority="4"]::before,
+.nu {
+  background-color: #008000;
 }
