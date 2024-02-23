@@ -58,17 +58,29 @@ body {
 }
 .side-bar {
   background-color: blanchedalmond;
-
+  @include flex();
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
   div {
     @include flex();
     justify-content: start;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-
+    width: 100%;
     button {
       background-color: aquamarine;
       margin-left: auto;
       padding: 0.2rem 0.8rem;
+      border-radius: 3rem;
+    }
+  }
+
+  .footer {
+    margin-top: auto;
+
+    a {
+      text-decoration: none;
     }
   }
 
@@ -79,12 +91,15 @@ body {
     flex-direction: column;
     align-items: start;
     gap: 0.7rem;
-
+    width: 90%;
     .project-item {
+      background-color: #008000;
       position: relative;
-      width: 80%;
+      padding: 0.3rem 0.6rem 0.3rem 0;
+      width: 100%;
       display: flex;
       justify-content: space-between;
+      border-radius: 0 0.4rem 0.4rem 0;
 
       button {
         width: 2rem;
@@ -97,7 +112,15 @@ body {
         font-size: 1rem;
         position: absolute;
         left: -2rem;
-        top: 0.5rem;
+        top: 0;
+        width: 10%;
+        height: 100%;
+        padding: 0.65rem 2rem 0.3rem 0;
+
+        border-radius: 0.4rem 0 0 0.4rem;
+        // padding-right: ;
+        // z-index: -3;
+        background-color: #008000;
       }
     }
   }
@@ -131,6 +154,21 @@ body {
       input {
         margin-left: -1.5rem;
       }
+      input:checked {
+        position: relative;
+      }
+      // input:checked::after,
+      input:checked::before {
+        content: "";
+        position: absolute;
+        right: -10rem;
+        bottom: 1.18rem;
+        width: 70rem;
+        height: 100%;
+        border-bottom: 2px solid rgb(93, 77, 77);
+        // padding-bottom: -10rem;
+      }
+
       &[data-priority] {
         position: relative;
       }

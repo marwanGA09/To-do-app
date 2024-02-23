@@ -10,6 +10,7 @@ export function defaultRender() {
     if (obj != null) {
       let card = TaskCard.createCard(obj, objectIndex, 0);
       displayCard.appendChild(card);
+      console.log(card);
     }
   });
 }
