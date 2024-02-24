@@ -1,8 +1,12 @@
-export class Project {
+export default class Project {
   static #projects = [];
+
   static #projectNames = [];
+
   #name;
+
   #projectItems;
+
   constructor(name) {
     this.#name = name;
     this.#projectItems = [];
@@ -17,6 +21,7 @@ export class Project {
   static set setProjects(obj) {
     Project.#projects.push(obj);
   }
+
   static get setProjects() {
     return Project.#projects;
   }
@@ -24,6 +29,7 @@ export class Project {
   getOriginalProjectItem() {
     return this.#projectItems;
   }
+
   setOriginalProjectItem() {
     localStorage.setItem(`${this.#name}`, JSON.stringify(this.#projectItems));
   }
@@ -31,26 +37,14 @@ export class Project {
   set projectsItem(itemObj) {
     this.#projectItems.push(itemObj);
     localStorage.setItem(
-      "localStorageKey",
-      JSON.stringify(Project.#projectNames)
+      'localStorageKey',
+      JSON.stringify(Project.#projectNames),
     );
     localStorage.setItem(`${this.#name}`, JSON.stringify(this.#projectItems));
   }
+
   get projectsItem() {
-    // return this.#projectItems;
-    if (localStorage.getItem(`${this.#name}`)) {
-      // console.log("*** from local storage");
-      // console.log(
-      //   "with in getProjectItem",
-      //   JSON.parse(localStorage.getItem(`${this.#name}`))
-      // );
-      return JSON.parse(localStorage.getItem(`${this.#name}`));
-    }
-    // else {
-    //   console.log("*** from if there no local storage");
-    //   console.log(this.#projectItems);
-    //   return this.#projectItems;
-    // }
+    return JSON.parse(localStorage.getItem(`${this.#name}`));
   }
 
   get name() {
