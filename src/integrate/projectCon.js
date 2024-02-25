@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import Project from '../app/Project';
 import TaskClass from '../app/task';
 import CreateProjectItem from '../dom/createProjectItem';
@@ -122,11 +121,11 @@ addProject.addEventListener('click', () => {
   });
 });
 
+/* eslint-disable max-len */
 const defaultData = [
   [
     {
       tittle:
-        // eslint-disable-next-line max-len
         'Complete JavaScript Algorithms and Data Structures Certification on freeCodeCamp',
       description:
         'Finish the remaining challenges and projects to earn the certification. Cover topics like ES6, Regular Expressions, Debugging, Data Structures, and Algorithms.',
@@ -297,6 +296,7 @@ const defaultData = [
     },
   ],
 ];
+/* eslint-enable max-len */
 
 // console.log(JSON.parse(localStorage.getItem(Project.setProjects[0].name)));
 const localStorageKey = JSON.parse(localStorage.getItem('localStorageKey'));
@@ -389,7 +389,9 @@ card.forEach((ca) => {
       const description = document.querySelector('#description');
       const dueDate = document.querySelector('#due-date');
       tittle.value = Project.setProjects[proIndex].projectsItem[objIndex].tittle;
-      description.value = Project.setProjects[proIndex].projectsItem[objIndex].description;
+      description.value = Project
+        .setProjects[proIndex]
+        .projectsItem[objIndex].description;
 
       const date = Project.setProjects[proIndex].projectsItem[objIndex].dueDate;
       dueDate.value = new Date(date).toISOString().slice(0, 16);
