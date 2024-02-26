@@ -22,6 +22,7 @@ export function defaultRender() {
     }
   });
 }
+
 export function renderTasks(ev) {
   // console.log(ev);
   removeCards();
@@ -41,9 +42,7 @@ export function displayAllProject() {
   removeCards();
   const displayCard = document.querySelector('.card-display');
   Project.setProjects.forEach((pro) => {
-    console.log(pro);
     const pros = pro.projectsItem;
-    console.log(pros);
     pros.forEach((obj) => {
       const card = TaskCard.createCard(obj);
       displayCard.appendChild(card);
