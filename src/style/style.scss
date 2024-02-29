@@ -130,7 +130,7 @@ body {
       }
 
       &::before {
-        content: "🔏";
+        content: '🔏';
         font-size: 1rem;
         position: absolute;
         left: -2rem;
@@ -181,7 +181,7 @@ body {
       }
       // input:checked::after,
       input:checked::before {
-        content: "";
+        content: '';
         position: absolute;
         right: -10rem;
         bottom: 1.18rem;
@@ -195,7 +195,7 @@ body {
         position: relative;
       }
       &[data-priority]::before {
-        content: "";
+        content: '';
         position: absolute;
         height: 100%;
         width: 1rem;
@@ -221,19 +221,67 @@ button {
 }
 
 // color priority
-.card[data-priority="1"]::before,
+.card[data-priority='1']::before,
 #vu {
   background-color: #ff0000;
 }
-.card[data-priority="2"]::before,
+.card[data-priority='2']::before,
 #u {
   background-color: #ffa500;
 }
-.card[data-priority="3"]::before,
+.card[data-priority='3']::before,
 #n {
   background-color: #ffff00;
 }
-.card[data-priority="4"]::before,
+.card[data-priority='4']::before,
 #nu {
   background-color: #008000;
+}
+
+// style dialogs
+
+.dialog2 {
+  font-size: 1.6rem;
+  margin: auto;
+  width: min(45rem, 70vw);
+  height: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: #c6b383;
+  border: 0;
+  box-shadow: 0 0 7px 7px gray;
+
+  input {
+    display: block;
+    width: 70%;
+    height: max-content;
+    padding: 0.3rem 0.6rem;
+  }
+  div {
+    display: flex;
+    gap: 2rem;
+
+    button {
+      font-size: 1.5rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 1rem;
+      background-color: rgb(172, 164, 164);
+      &:hover {
+        background-color: rgb(164, 153, 153);
+      }
+    }
+
+    .cancel-modal {
+      background-color: rgb(173, 62, 62);
+      &:hover {
+        background-color: rgb(139, 48, 48);
+      }
+    }
+  }
+  &::backdrop {
+    background-color: #4c974cc4;
+  }
 }
