@@ -13,5 +13,5 @@ allTasks.addEventListener('click', () => {
   displayAllProject();
 });
 
-const dialog = document.querySelector('.dialog2');
-dialog.showModal();
+// const dialog = document.querySelector('.dialog2');
+// dialog.showModal();
