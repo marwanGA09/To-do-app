@@ -15,3 +15,5 @@ allTasks.addEventListener('click', () => {
 
 // const dialog = document.querySelector('.dialog2');
 // dialog.showModal();
+
+console.log('jy kd');
